@@ -38,7 +38,7 @@ declare global {
   const logicOr: typeof import('@vueuse/core')['logicOr']
   const makeDestructurable: typeof import('@vueuse/core')['makeDestructurable']
   const markRaw: typeof import('vue')['markRaw']
-  const NButton: typeof import('naive-ui')['NButton']
+  const NAvatar: typeof import('naive-ui')['NAvatar']
   const nextTick: typeof import('vue')['nextTick']
   const onActivated: typeof import('vue')['onActivated']
   const onBeforeMount: typeof import('vue')['onBeforeMount']

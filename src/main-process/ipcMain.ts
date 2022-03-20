@@ -7,11 +7,18 @@ import LCU_EVENT from "./event";
 app.whenReady().then(() => {
   const mainWin = BrowserWindow.fromId(1);
 
-  // 获取用户信息
+  // 获取用户信息和头像
   ipcMain.handle(LCU_EVENT.getUserInfo, async (event, arg) => {
     try {
-      const res = await Get<UserType>(LCU_API.CURRENT_SUMMONER, { httpsAgent });
-      return res;
+      const userInfoRes = await Get<UserType>(LCU_API.USER_INFO, { httpsAgent });
+      const userIconRes = await Get<any>(`${LCU_API.USER_ICON}${userInfoRes?.profileIconId}.jpg`, {
+        httpsAgent,
+        responseType: "arraybuffer"
+      });
+      return {
+        userInfoRes,
+        userIconRes: `data:image/jpg;base64,${Buffer.from(userIconRes, "binary").toString("base64")}`
+      };
     } catch (error) {}
   });
 
