@@ -4,7 +4,7 @@ import WebSocket from "ws";
 import { LCU_WS_API } from "./api";
 import LCU_EVENT from "./event";
 
-const url = `riot:T_ub8OV9r1zWuvGopASnkQ@127.0.0.1:8403`;
+const url = `riot:mwIdtXq_A9-C1AL2LYHl2w@127.0.0.1:3680`;
 const ws = new WebSocket(`wss://${url}`);
 
 enum LcuMessageType {
@@ -35,7 +35,7 @@ ws.on("message", (message: string) => {
   try {
     const msg: LcuWsResponse = JSON.parse(message);
     const [type, eventName, WsData] = msg;
-
+    console.log(type, eventName, WsData);
     switch (type) {
       case LcuMessageType.WELCOME:
         break;

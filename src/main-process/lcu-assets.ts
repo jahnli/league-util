@@ -1,6 +1,6 @@
 import { Get, httpsAgent } from "@/service/axios";
 
-const url = "https://127.0.0.1:8403";
+const url = "https://127.0.0.1:3680";
 const prefixPath = "/lol-game-data/assets/v1";
 type LcuImgType = "jpg" | "png";
 
