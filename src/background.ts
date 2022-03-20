@@ -23,6 +23,7 @@ async function createWindow() {
   });
   // 引入主线程
   require("./main-process/ipcMain");
+  require("./main-process/ws");
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
     await win.loadURL(process.env.WEBPACK_DEV_SERVER_URL as string);

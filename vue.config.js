@@ -6,7 +6,8 @@ const { defineConfig } = require("@vue/cli-service");
 module.exports = defineConfig({
   pluginOptions: {
     electronBuilder: {
-      preload: "src/preload-process/preload.js"
+      preload: "src/preload-process/preload.js",
+      nodeIntegration: true
     }
   },
   configureWebpack: {
