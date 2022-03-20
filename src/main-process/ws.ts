@@ -1,6 +1,7 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 import { BrowserWindow } from "electron";
 import WebSocket from "ws";
+import { LCU_WS_API } from "./api";
 import LCU_EVENT from "./event";
 
 const url = `riot:T_ub8OV9r1zWuvGopASnkQ@127.0.0.1:8403`;
@@ -46,10 +47,9 @@ ws.on("message", (message: string) => {
         break;
       case LcuMessageType.EVENT:
         const { eventType, uri, data } = WsData;
-        if (uri === `/lol-champ-select-legacy/v1/session`) {
-          console.log(data.actions);
+        if (uri === LCU_WS_API.ROOM_STATE) {
           const mainWin = BrowserWindow.fromId(1);
-          mainWin?.webContents.send(LCU_EVENT.selectSession, data);
+          mainWin?.webContents.send(LCU_EVENT.GET_ROOM_STATE, data);
         }
         // console.log(eventType, uri, data);
         break;
